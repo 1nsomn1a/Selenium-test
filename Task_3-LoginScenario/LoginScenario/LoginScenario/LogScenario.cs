@@ -3,7 +3,9 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
-using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 
 namespace LoginScenario
 {
@@ -16,13 +18,17 @@ namespace LoginScenario
         [SetUp]
         public void Start()
         {
-            driver = new ChromeDriver();
+            //driver = new InternetExplorerDriver("E:\\Drivers");
+            //driver = new FirefoxDriver("E:\\Drivers");
+            driver = new EdgeDriver();
+            //driver = new ChromeDriver();
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
         }
 
         [Test]
         public void Login()
         {
+            //driver.Navigate().GoToUrl("http://localhost:8080/litecart/admin/");
             driver.Url = _baseUrl;
             driver.FindElement(By.Name("username")).SendKeys("admin");
             driver.FindElement(By.Name("password")).SendKeys("admin");
