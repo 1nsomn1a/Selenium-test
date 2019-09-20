@@ -10,11 +10,7 @@ namespace Task8_StikerScenario
     public class StikerScenario
     {
         private IWebDriver driver;
-        private readonly string _baseUrl = "http://localhost:8080/litecart/";
-
-        private const string _mostPopularSection = "//*[@id='box-most-popular']//li";
-        private const string _campaignSection = "//*[@id='box-campaigns']//li";
-        private const string _latestProductsSection = "//*[@id='box-latest-products']//li";
+        private readonly string _baseUrl = "http://localhost/litecart/";
 
         [OneTimeSetUp]
         public void Start()
@@ -24,19 +20,14 @@ namespace Task8_StikerScenario
             driver.Url = _baseUrl;
         }
 
-        [TestCase(_mostPopularSection, TestName = "Most Popular section")]
-        [TestCase(_campaignSection, TestName = "Campaigns section")]
-        [TestCase(_latestProductsSection, TestName = "Latest products section")]
-        public void SectionTest(string section)
+        [Test]
+        public void test()
         {
-            IList<IWebElement> elements = driver.FindElements(By.XPath(section));
+            IList<IWebElement> products = driver.FindElements(By.XPath("//li[contains(@class, 'product')]"));
 
-            if (elements.Count != 0)
+            foreach (IWebElement element in products)
             {
-                for (int i = 1; i <= elements.Count; i++)
-                {
-                    Assert.AreEqual(1, driver.FindElements(By.XPath($"{section}[{i}]//div[contains(@class, 'sticker')]")).Count);
-                }
+                Assert.AreEqual(1, element.FindElements(By.XPath(".//*[contains(@class, 'sticker')]")).Count);
             }
         }
 
