@@ -14,7 +14,7 @@ namespace Task7_adminScenario
         private IWebDriver driver;
         private readonly string _baseUrl = "http://localhost:8080/litecart/admin/";
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Start()
         {
             driver = new ChromeDriver();
@@ -28,7 +28,11 @@ namespace Task7_adminScenario
             driver.FindElement(By.CssSelector("[name = username]")).SendKeys("admin");
             driver.FindElement(By.CssSelector("[name = password]")).SendKeys("admin");
             driver.FindElement(By.CssSelector("[name = login]")).Click();
+        }
 
+        [Test]
+        public void Scenario()
+        {
             IList<IWebElement> elements = driver.FindElements(By.XPath("//div[@id='box-apps-menu-wrapper']//li"));
 
             for (int i = 1; i <= elements.Count; i++)
@@ -44,12 +48,12 @@ namespace Task7_adminScenario
                     {
                         driver.FindElement(By.XPath($"//li[@class='selected']//li[not(@id='app-')][{j}]")).Click();
                         Assert.That(driver.FindElements(By.XPath("//h1")).Count, Is.GreaterThan(0));
-                    }                        
+                    }
                 }
-            }          
+            }
         }
-
-        [TearDown]
+        
+        [OneTimeTearDown]
         public void Stop()
         {
             Thread.Sleep(2000);
