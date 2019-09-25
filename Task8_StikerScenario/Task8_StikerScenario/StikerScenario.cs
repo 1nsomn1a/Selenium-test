@@ -16,6 +16,7 @@ namespace Task8_StikerScenario
         public void Start()
         {
             driver = new ChromeDriver();
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
             driver.Url = _baseUrl;
         }
