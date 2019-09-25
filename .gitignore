@@ -354,3 +354,7 @@ Task_1-SimpleTest/MyFirstTest/.vs/MyFirstTest/v15/.suo
 Task_1-SimpleTest/MyFirstTest/.vs/MyFirstTest/v15/Server/sqlite3/storage.ide
 Task_1-SimpleTest/MyFirstTest/.vs/MyFirstTest/v15/.suo
 Task_1-SimpleTest/MyFirstTest/.vs/MyFirstTest/v15/Server/sqlite3/storage.ide
+Task9_SortScenario/Task9_SortScenario/Properties/AssemblyInfo.cs
+*.config
+*.csproj
+*.sln
