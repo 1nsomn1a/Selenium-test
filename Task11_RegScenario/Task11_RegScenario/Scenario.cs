@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Threading;
-using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System.Linq;
 
 namespace Task11_RegScenario
@@ -14,6 +11,7 @@ namespace Task11_RegScenario
     {
         private IWebDriver driver;
         private readonly string _MainPage = "http://localhost:8080/litecart/en/";
+        private readonly string _password = "password123";
 
         [OneTimeSetUp]
         public void Start()
@@ -27,7 +25,7 @@ namespace Task11_RegScenario
         {
             driver.Url = _MainPage;
             string email = EmailAddress();
-            string password = "password123";
+            //string password = "password123";
 
             driver.FindElement(By.XPath("//tbody//a")).Click();
 
@@ -44,8 +42,8 @@ namespace Task11_RegScenario
 
             driver.FindElement(By.XPath("//*[@name='email']")).SendKeys(email);
             driver.FindElement(By.XPath("//*[@name='phone']")).SendKeys("+235294583498");
-            driver.FindElement(By.XPath("//*[@name='password']")).SendKeys(password);
-            driver.FindElement(By.XPath("//*[@name='confirmed_password']")).SendKeys(password);
+            driver.FindElement(By.XPath("//*[@name='password']")).SendKeys(_password);
+            driver.FindElement(By.XPath("//*[@name='confirmed_password']")).SendKeys(_password);
             driver.FindElement(By.XPath("//*[@name='create_account']")).Click();
 
             driver.FindElement(By.XPath("//*[@id='box-account']//ul/li[4]/a")).Click();

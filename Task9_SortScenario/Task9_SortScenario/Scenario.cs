@@ -4,7 +4,6 @@ using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System.Collections.Generic;
-using OpenQA.Selenium.Support.UI;
 
 namespace Task9_SortScenario
 {
@@ -16,21 +15,26 @@ namespace Task9_SortScenario
         private readonly string _countriesUrl = "http://localhost:8080/litecart/admin/?app=countries&doc=countries";
         private readonly string _geoZonesUrl = "http://localhost:8080/litecart/admin/?app=geo_zones&doc=geo_zones";
 
-        [OneTimeSetUp]
+        [SetUp]
         public void Start()
         {
             driver = new ChromeDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-        }
 
-        [Test]
-        public void _Login()
-        {
             driver.Url = _baseUrl;
             driver.FindElement(By.CssSelector("[name = username]")).SendKeys("admin");
             driver.FindElement(By.CssSelector("[name = password]")).SendKeys("admin");
             driver.FindElement(By.CssSelector("[name = login]")).Click();
         }
+            
+        //[Test]
+        //public void _Login()
+        //{
+        //    driver.Url = _baseUrl;
+        //    driver.FindElement(By.CssSelector("[name = username]")).SendKeys("admin");
+        //    driver.FindElement(By.CssSelector("[name = password]")).SendKeys("admin");
+        //    driver.FindElement(By.CssSelector("[name = login]")).Click();
+        //}
 
         [Test(Description = "Task9_1a")]
         public void Countries()
@@ -78,7 +82,7 @@ namespace Task9_SortScenario
 
         }
 
-        [OneTimeTearDown]
+        [TearDown]
         public void Stop()
         {
             Thread.Sleep(2000);
