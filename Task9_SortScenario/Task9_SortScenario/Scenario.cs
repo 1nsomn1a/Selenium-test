@@ -26,15 +26,6 @@ namespace Task9_SortScenario
             driver.FindElement(By.CssSelector("[name = password]")).SendKeys("admin");
             driver.FindElement(By.CssSelector("[name = login]")).Click();
         }
-            
-        //[Test]
-        //public void _Login()
-        //{
-        //    driver.Url = _baseUrl;
-        //    driver.FindElement(By.CssSelector("[name = username]")).SendKeys("admin");
-        //    driver.FindElement(By.CssSelector("[name = password]")).SendKeys("admin");
-        //    driver.FindElement(By.CssSelector("[name = login]")).Click();
-        //}
 
         [Test(Description = "Task9_1a")]
         public void Countries()

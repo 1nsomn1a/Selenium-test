@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Linq;
+using System.IO;
 
 namespace Task11_RegScenario
 {
@@ -49,7 +50,7 @@ namespace Task11_RegScenario
             driver.FindElement(By.XPath("//*[@id='box-account']//ul/li[4]/a")).Click();
 
             driver.FindElement(By.XPath("//*[@name='email']")).SendKeys(email);
-            driver.FindElement(By.XPath("//*[@name='password']")).SendKeys(password);
+            driver.FindElement(By.XPath("//*[@name='password']")).SendKeys(_password);
             driver.FindElement(By.XPath("//*[@name='login']")).Click();
 
             driver.FindElement(By.XPath("//*[@id='box-account']//ul/li[4]/a")).Click();
