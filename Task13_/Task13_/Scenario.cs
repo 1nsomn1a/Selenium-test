@@ -21,6 +21,7 @@ namespace Task13_Cart
         }
 
         [Test]
+        [Obsolete] //To make ExpectedConditions without warnings
         public void Scenario()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
